@@ -1,8 +1,64 @@
-from django.shortcuts import render
+from typing import Any
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views import View
+from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
+from autos.models import Autos, Make
+from django.contrib.auth import authenticate, login, logout
+from .forms import AutosForm, MakeForm
+from .models import Autos, Make
 
-# Create your views here.
-class IndexView(View):
-    def get(self, request):
-        return render(request, 'autos/main.html')
+# Create your views here.    
+class AutosListView(ListView):
+    model = Autos
+    template_name = 'autos/list_auto.html'
+
+class AutosDetailView(DetailView):
+    model = Autos
+    template_name = 'autos/detail_auto.html'
+    
+class AutosCreateView(CreateView):
+    model = Autos
+    form_class = AutosForm
+    template_name = 'autos/form_auto.html'
+    success_url = reverse_lazy('autos:autos_list_view')
+
+class AutosUpdateView(UpdateView):
+    model = Autos
+    template_name = 'autos/form_auto.html'
+    form_class = AutosForm
+    success_url = reverse_lazy('autos:auto_detail_view')
+
+class AutosDeleteView(DeleteView):
+    model = Autos
+    template_name = 'autos/form_delete_autos.html'
+    success_url = reverse_lazy('autos:autos_list_view')
+    
+
+class MakeListView(ListView):
+    model = Make
+    template_name = 'autos/list_make.html'
+
+class MakeCreateView(CreateView):
+    model = Make
+    template_name = 'autos/form_make.html'
+    form_class = MakeForm
+    success_url = reverse_lazy('autos:makes_list_view')
+
+
+class MakeUpdateView(UpdateView):
+    model = Make
+    template_name = 'autos/form_make.html'
+    form_class = MakeForm
+    success_url = reverse_lazy('autos: autos_list_view')
+
+class MakeDeleteView(DeleteView):
+    model = Make
+    template_name = 'autos/form_delete_make.html'
+    success_url = reverse_lazy('autos:makes_list_view')
+
+    
+
+
+
 

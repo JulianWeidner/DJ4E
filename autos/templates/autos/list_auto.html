@@ -1,0 +1,15 @@
+{% extends "autos/base_bootstrap.html" %}
+{% block content %}
+
+<a href="{% url 'autos:makes_list_view' %}">View Makes</a>
+</br>
+<h3>Autos List</h3>
+<a href="{% url 'autos:autos_create_view' %}">Create Auto</a>
+
+
+<ul>
+    {% for auto in object_list %}
+        <li> {{auto.nickname}} | {{ auto.make.name}}  <a href="{% url 'autos:autos_delete_view' auto.pk %}">Delete</a></li>
+    {% endfor %}
+</ul>
+{% endblock content %}
