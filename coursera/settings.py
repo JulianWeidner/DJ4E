@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-&q-&etgk#ns2$9&kc(mj9&8-)ihu+my&4@=i#_^9j6l^aja^!w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['julianweidner.pythonanywhere.com']
 
 
 # Application definition
@@ -101,7 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LOGOUT_REDIRECT_URL = '/'
-LOGIN_REDIRECT_URL = '/autos/'
+LOGIN_REDIRECT_URL = '/autos/list'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
