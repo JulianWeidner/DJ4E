@@ -1,0 +1,14 @@
+{% extends "base_bootstrap.html" %}
+{% block content %} 
+</br>
+<a href="{% url 'cats:cat_create' %">Create Cat</a>
+<a href="{% url 'cats:breed_create' %}">Create Breed</a>
+<a href="{% url 'cats:breed_list' %}"> Breeds </a>
+<a href="{% url 'cats:main' %}"> Cats </a>
+<h1>Breed List</h1>
+<ul>
+{% for breed in object_list  %}
+    <li> {{ breed }} <a href="{% url 'cats:breed_update' breed.pk %}">Update</a> <a href="{% url 'cats:breed_delete' breed.pk %}">Delete</a></li>
+{% endfor %}
+</ul>
+{% endblock content %}  
