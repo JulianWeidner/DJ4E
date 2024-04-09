@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import AutosForm, MakeForm
 from .models import Autos, Make
-
+1
 
 # Create your views here.    
 class AutosListView(LoginRequiredMixin, ListView):

@@ -6,7 +6,6 @@ from django.contrib.auth.views import LoginView
 app_name = 'autos'
 
 urlpatterns = [
-    path('', LoginView.as_view(), name='login'),
     path('list/', views.AutosListView.as_view(), name = "autos_list_view"),
     path('create/', views.AutosCreateView.as_view(), name = 'autos_create_view'), #Create
     path('<int:pk>/', views.AutosDetailView.as_view(), name = 'autos_detail_view'), #Read, 
