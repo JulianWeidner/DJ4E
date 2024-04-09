@@ -62,5 +62,5 @@ class DeleteBreedView(LoginRequiredMixin, DeleteView):
 
 
 
-    
+
 
