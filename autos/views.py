@@ -4,13 +4,14 @@
 
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
+from autos.models import Autos, Make
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-
 from .forms import AutosForm, MakeForm
 from .models import Autos, Make
 
 
-# Create your views here.    
+# Create your views here.
 class AutosListView(LoginRequiredMixin, ListView):
     model = Autos
     template_name = 'autos/list_auto.html'
@@ -18,7 +19,7 @@ class AutosListView(LoginRequiredMixin, ListView):
 class AutosDetailView(LoginRequiredMixin, DetailView):
     model = Autos
     template_name = 'autos/detail_auto.html'
-    
+
 class AutosCreateView(LoginRequiredMixin, CreateView):
     model = Autos
     form_class = AutosForm
@@ -29,13 +30,13 @@ class AutosUpdateView(LoginRequiredMixin, UpdateView):
     model = Autos
     template_name = 'autos/form_auto.html'
     form_class = AutosForm
-    success_url = reverse_lazy('autos:auto_detail_view')
+    success_url = reverse_lazy('autos:autos_list_view')
 
 class AutosDeleteView(LoginRequiredMixin, DeleteView):
     model = Autos
     template_name = 'autos/form_delete_autos.html'
     success_url = reverse_lazy('autos:autos_list_view')
-    
+
 
 class MakeListView(LoginRequiredMixin, ListView):
     model = Make
@@ -52,14 +53,14 @@ class MakeUpdateView(LoginRequiredMixin, UpdateView):
     model = Make
     template_name = 'autos/form_make.html'
     form_class = MakeForm
-    success_url = reverse_lazy('autos: autos_list_view')
+    success_url = reverse_lazy('autos:makes_list_view')
 
 class MakeDeleteView(LoginRequiredMixin, DeleteView):
     model = Make
     template_name = 'autos/form_delete_make.html'
     success_url = reverse_lazy('autos:makes_list_view')
 
-    
+
 
 
 
