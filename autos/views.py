@@ -10,16 +10,6 @@ from .forms import AutosForm, MakeForm
 from .models import Autos, Make
 
 
-class MainView(View):
-    template_name = 'registration/login.html'
-    def get(self, request):
-        
-        context = {}
-
-        
-        return render(request, self.template_name, context)
-
-
 # Create your views here.    
 class AutosListView(LoginRequiredMixin, ListView):
     model = Autos

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "cats.apps.CatsConfig",
     "autos.apps.AutosConfig",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -101,7 +102,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LOGOUT_REDIRECT_URL = '/'
-LOGIN_REDIRECT_URL = '/autos/'
+LOGIN_REDIRECT_URL = '/autos/list'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

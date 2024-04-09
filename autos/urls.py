@@ -1,12 +1,13 @@
 from . import urls
 from django.urls import path
 from . import views
+from django.contrib.auth.views import LoginView
 
 app_name = 'autos'
 
 urlpatterns = [
-    path('', views.MainView.as_view(), name='main'),
-    path('autos/', views.AutosListView.as_view(), name = "autos_list_view"), #list
+    path('autos/', LoginView.as_view(), name='login'),
+    path('autos/list', views.AutosListView.as_view(), name = "autos_list_view"),
     path('autos/create/', views.AutosCreateView.as_view(), name = 'autos_create_view'), #Create
     path('autos/<int:pk>/', views.AutosDetailView.as_view(), name = 'autos_detail_view'), #Read, 
     path('autos/<int:pk>/update/', views.AutosUpdateView.as_view(), name = 'autos_update_view'), #update
