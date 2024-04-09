@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "home.apps.HomeConfig",
     "cats.apps.CatsConfig",
     "autos.apps.AutosConfig",
     "django.contrib.admin",
