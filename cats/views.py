@@ -15,7 +15,7 @@ class CreateCatView(LoginRequiredMixin, CreateView):
     model = Cat
     form_class = CatForm
     template_name = 'cats/forms/cat_form.html'
-    
+    success_url = reverse_lazy('cats:main')
 
 class DetailsCatView(LoginRequiredMixin, DetailView):
     model = Cat
@@ -57,12 +57,12 @@ class UpdateBreedView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('cats:main')
 
 class DeleteBreedView(LoginRequiredMixin, DeleteView):
-    model = Cat
+    model = Breed
     template_name = 'cats/forms/delete_form.html'
     success_url = reverse_lazy('cats:main')
 
-    
 
 
-    
+
+
 
