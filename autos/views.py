@@ -1,14 +1,14 @@
-from typing import Any
-from django.shortcuts import render, redirect
+#from django.shortcuts import render, redirect
+#from django.contrib.auth import authenticate, login, logout
+#from django.views import View
+
 from django.urls import reverse_lazy
-from django.views import View
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
-from autos.models import Autos, Make
-from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .forms import AutosForm, MakeForm
 from .models import Autos, Make
-1
+
 
 # Create your views here.    
 class AutosListView(LoginRequiredMixin, ListView):

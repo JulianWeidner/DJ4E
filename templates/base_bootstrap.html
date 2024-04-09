@@ -24,7 +24,9 @@
 </head>
 <body>
 <div class="container">
-{% block navbar %} {% endblock %}
+{% block navbar %} 
+<a href="{% url 'home:home'%}">DJ4E HOME</a>
+{% endblock %}
 {% block welcome %} {% endblock %}
 {% block messages %}
     {% if messages %}
