@@ -23,4 +23,5 @@ urlpatterns = [
     path("", include('home.urls')),
     path('autos/', include('autos.urls')),
     path('cats/', include('cats.urls')),
+    path('ads/', include('ads.urls')),
 ]
