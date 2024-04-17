@@ -25,7 +25,7 @@
 </head>
 <body>
 <div class="container">
-{% block navbar %} <a href="{% url 'login' %}">Login</a>{% endblock %}
+{% block navbar %} <a href="{% url 'login'%}?next=/ads/">Login</a>{% endblock %}
 {% block welcome %} {% endblock %}
 {% block messages %}
     {% if messages %}
