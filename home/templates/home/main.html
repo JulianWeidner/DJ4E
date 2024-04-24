@@ -1,7 +1,10 @@
 {% extends "base_bootstrap.html" %}
 {% block content %}
-    <h1>Welcome to {{ settings.APP_NAME }}</h1>
-    <p>
-    Hello world.
-    </p>
+    <h1>Welcome to Julian's DJ4E {{ settings.APP_NAME }}</h1>
+    <ul>
+        <li><a href="{% url 'ads:all' %}">Ads</a></li>
+        <li><a href="{% url 'cats:main' %}">Cats</a></li>
+        <li><a href="{% url 'autos:autos_list_view' %}">Autos</a></li>
+    </ul>
+
 {% endblock content %}
