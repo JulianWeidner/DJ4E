@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
+from django.db.models import Q
 
 from ads.forms import CreateForm, CommentForm
 
@@ -13,7 +14,15 @@ class AdListView(OwnerListView):
     template_name = 'ads/ad_list.html'
 
     def get(self, request):
-        ad_list = Ad.objects.all()
+        search_val = request.GET.get('search', False)
+        if search_val:
+            query = Q(title__contains=search_val)
+            query.add(Q(text__contains=search_val), Q.OR)
+            ad_list = Ad.objects.filter(query).select_related().order_by('-updated_at')[:10]
+        else:
+            ad_list = Ad.objects.all()
+        
+
         favorites = list()
         if request.user.is_authenticated: 
             rows = request.user.favorite_ads.values('id')
