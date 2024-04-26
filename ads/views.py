@@ -17,6 +17,7 @@ class AdListView(OwnerListView):
         search_val = request.GET.get('search', False)
         if search_val:
             query = Q(title__contains=search_val)
+            query.add(Q(tags__name__contains=search_val), Q.OR)
             query.add(Q(text__contains=search_val), Q.OR)
             ad_list = Ad.objects.filter(query).select_related().order_by('-updated_at')[:10]
         else:
@@ -63,6 +64,7 @@ class AdCreateView(LoginRequiredMixin, View):
         ad = form.save(commit=False)
         ad.owner = self.request.user
         ad.save()
+        form.save_m2m()
         return redirect(self.success_url)
 
     # List the fields to copy from the Ad model to the Ad form
@@ -87,6 +89,7 @@ class AdUpdateView(LoginRequiredMixin, View):
 
         ad = form.save(commit=False)
         ad.save()
+        form.save_m2m()
 
         return redirect(self.success_url)
 
